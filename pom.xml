@@ -2,8 +2,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>org.dashj</groupId>
-  <artifactId>dashj-parent</artifactId>
+  <groupId>org.quebecoinj</groupId>
+  <artifactId>quebecoinj-parent</artifactId>
   <version>0.14.4.3</version>
   <packaging>pom</packaging>
 
@@ -27,7 +27,7 @@
     <url>scm:git:https://github.com/bitcoinj/darkcoinj</url>
   </scm>
 
-  <name>dashj Parent</name>
+  <name>quebecoinj Parent</name>
   <description>Provides the common configuration for the dashj modules</description>
   <url>http://dash.org/dashj/</url>
 
@@ -163,6 +163,8 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <generated.sourceDirectory>gen</generated.sourceDirectory>
+    <maven.compiler.target>1.8</maven.compiler.target>
+    <maven.compiler.source>1.8</maven.compiler.source>
   </properties>
 
   <profiles>
