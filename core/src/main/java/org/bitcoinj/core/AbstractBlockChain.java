@@ -173,6 +173,7 @@ public abstract class AbstractBlockChain {
         addReorganizeListener(Threading.SAME_THREAD, wallet);
         addTransactionReceivedListener(Threading.SAME_THREAD, wallet);
         int walletHeight = wallet.getLastBlockSeenHeight();
+        log.warn("Wallet/chain height mismatch: {} ", wallet.getLastBlockSeenHeight());
         int chainHeight = getBestChainHeight();
         if (walletHeight != chainHeight) {
             log.warn("Wallet/chain height mismatch: {} vs {}", walletHeight, chainHeight);
@@ -948,7 +949,14 @@ public abstract class AbstractBlockChain {
         checkState(lock.isHeldByCurrentThread());
 
         int DiffMode = 1;
-        if (params.getId().equals(NetworkParameters.ID_TESTNET)) {
+
+        //ghonyme
+        if (storedPrev.getHeight()+1 >=50) {
+          DiffMode = 3;
+        } 
+        // End of ghonyme
+
+/*        if (params.getId().equals(NetworkParameters.ID_TESTNET)) {
             if (storedPrev.getHeight()+1 >= 4001) { DiffMode = 4; }
         }
         else {
@@ -956,7 +964,7 @@ public abstract class AbstractBlockChain {
             else if (storedPrev.getHeight()+1 >= 34140) { DiffMode = 3; }
             else if (storedPrev.getHeight()+1 >= 15200) { DiffMode = 2; }
         }
-
+end of ghonyme */
         if (DiffMode == 1) { checkDifficultyTransitions_V1(storedPrev, nextBlock); return; }
         else if (DiffMode == 2) { checkDifficultyTransitions_V2(storedPrev, nextBlock); return;}
         else if (DiffMode == 3) { DarkGravityWave(storedPrev, nextBlock); return;}
@@ -1243,6 +1251,12 @@ public abstract class AbstractBlockChain {
             }
 
             // No ... so check the difficulty didn't actually change.
+
+            // Edited by ghonyme because difficulty changes at block 1
+            if (storedPrev.getHeight() == 0 ) {
+              return;
+            }
+
             if (nextBlock.getDifficultyTarget() != prev.getDifficultyTarget())
                 throw new VerificationException("Unexpected change in difficulty at height " + storedPrev.getHeight() +
                         ": " + Long.toHexString(nextBlock.getDifficultyTarget()) + " vs " +
@@ -1299,7 +1313,7 @@ public abstract class AbstractBlockChain {
 
         if (newTargetCompact != receivedTargetCompact)
             throw new VerificationException("Network provided difficulty bits do not match what was calculated: " +
-                    newTargetCompact + " vs " + receivedTargetCompact);
+                    newTargetCompact + " vs " + receivedTargetCompact + " at block " + storedPrev.getHeight());
     }
 
     private void checkDifficultyTransitions_V2(StoredBlock storedPrev, Block nextBlock) throws BlockStoreException, VerificationException {
@@ -1484,6 +1498,10 @@ public abstract class AbstractBlockChain {
             ///if(System.getProperty("os.name").toLowerCase().contains("windows"))
             //{
             if(height <= 68589)
+
+/* ghonyme patch */
+            if ( true )
+/* End ghonyme patch */
             {
                 long nBitsNext = nextBlock.getDifficultyTarget();
 
