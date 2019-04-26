@@ -19,7 +19,7 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <groupId>org.quebecoinj</groupId>
+        <groupId>com.multicoin</groupId>
         <artifactId>quebecoinj-parent</artifactId>
         <version>0.14.4.3</version>
     </parent>
@@ -32,7 +32,7 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.quebecoinj</groupId>
+            <groupId>com.multicoin</groupId>
             <artifactId>quebecoinj-core</artifactId>
             <version>${project.parent.version}</version>
         </dependency>

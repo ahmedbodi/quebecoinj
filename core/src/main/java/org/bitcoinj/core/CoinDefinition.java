@@ -26,22 +26,22 @@ public class CoinDefinition {
     }
     public static final CoinPrecision coinPrecision = CoinPrecision.Coins;
 
-    public static final String UNSPENT_API_URL = "https://chainz.cryptoid.info/dash/api.dws?q=unspent";
+    public static final String UNSPENT_API_URL = "https://explorateur-qbc.circonference.ca/";
     public enum UnspentAPIType {
         BitEasy,
         Blockr,
         Abe,
         Cryptoid,
     };
-    public static final UnspentAPIType UnspentAPI = UnspentAPIType.Cryptoid;
+    public static final UnspentAPIType UnspentAPI = UnspentAPIType.Abe;
 
-    public static final String BLOCKEXPLORER_BASE_URL_PROD = "http://http://cryptexplorer.com/";    //blockr.io
-    public static final String BLOCKEXPLORER_ADDRESS_PATH = "address/";             //blockr.io path
+    public static final String BLOCKEXPLORER_BASE_URL_PROD = "https://explorateur-qbc.circonference.ca";
+    public static final String BLOCKEXPLORER_ADDRESS_PATH = "address/";
     public static final String BLOCKEXPLORER_TRANSACTION_PATH = "tx/";              //blockr.io path
     public static final String BLOCKEXPLORER_BLOCK_PATH = "block/";                 //blockr.io path
     public static final String BLOCKEXPLORER_BASE_URL_TEST = BLOCKEXPLORER_BASE_URL_PROD;
 
-    public static final String DONATION_ADDRESS = "QRskHZbxrkXTThMJRa1v3rapsLWFfa9EPD";  //Hash Engineering donation DASH address
+    public static final String DONATION_ADDRESS = "QeLFHAsU1TNeKJ8yupYV1XKe7CTNgUQnro";  //Hash Engineering donation DASH address
 
     enum CoinHash {
         SHA256,
@@ -113,8 +113,39 @@ public class CoinDefinition {
 
     //net.cpp strDNSSeed
     static public String[] dnsSeeds = new String[] {
-            "dnsseed.service-crypto.com",
-            "qbcseed.service-crypto.com"
+        "80.240.25.139",
+        "46.226.108.74",
+        "149.248.9.110",
+        "138.197.154.194",
+        "68.183.162.97",
+        "45.77.189.100",
+        "209.97.177.155",
+        "162.243.107.215",
+        "66.42.80.176",
+        "107.22.5.112",
+        "45.77.218.240",
+        "149.28.124.235",
+        "139.180.204.127",
+        "77.247.146.96",
+        "149.248.10.112",
+        "107.77.172.51",
+        "45.76.128.24",
+        "45.32.135.211",
+        "207.148.99.140",
+        "45.76.228.10",
+        "45.63.95.56",
+        "66.42.42.137",
+        "173.212.223.21",
+        "45.32.169.249",
+        "217.69.3.249",
+        "176.139.5.88",
+        "139.180.212.250",
+        "45.32.203.103",
+        "149.28.168.109",
+        "206.172.86.97",
+        "5.34.57.149",
+        "96.41.91.147",
+        "79.9.210.108"
     };
 
 
